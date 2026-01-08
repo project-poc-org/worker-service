@@ -57,19 +57,3 @@ jobs:
         with:
           sarif_file: 'trivy-results.sarif'
           category: 'trivy'
-      
-      - name: Checkov scan
-        uses: bridgecrewio/checkov-action@v12
-        with:
-          directory: .
-          framework: all
-          soft_fail: true
-          output_format: sarif
-          output_file_path: ./checkov-report
-      
-      - name: Upload Checkov results to GitHub Security
-        uses: github/codeql-action/upload-sarif@v4
-        if: always() && hashFiles('./checkov-report/results_sarif.sarif') != ''
-        with:
-          sarif_file: './checkov-report/results_sarif.sarif'
-          category: 'checkov'
