@@ -77,7 +77,7 @@ jobs:
     name: Docker Build & Push
     needs: [build, code-quality]
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    uses: ./.github/workflows/docker-build-push.yml
+    uses: project-poc-org/reusable-workflows/.github/workflows/docker-build-push.yml@v1.0.0
     with:
       app-name: worker-service
       app-version: ${{ needs.build.outputs.version }}
@@ -86,6 +86,4 @@ jobs:
     secrets:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
       AWS_REGION: ${{ secrets.AWS_REGION }}
-      ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
