@@ -23,6 +23,9 @@ WORKDIR /app
 # Copy application code
 COPY --chown=appuser:appuser . .
 
+# Remove write permissions for security
+RUN chmod -R a-w /app
+
 # Update PATH to include user-installed packages
 ENV PATH=/home/appuser/.local/bin:$PATH
 
