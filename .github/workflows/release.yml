@@ -23,7 +23,14 @@ on:
           - rc
 
 jobs:
-  analyze-commits:
+  release:
+    name: Automated Release
+    uses: project-poc-org/reusable-workflows/.github/workflows/release.yml@v1.1.0
+    permissions:
+      contents: write
+      pull-requests: write
+    with:
+      release-type: ${{ github.event.inputs.release-type || 'auto' }}
     name: Analyze Commits & Determine Version
     runs-on:
       group: projects-poc
