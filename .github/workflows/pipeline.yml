@@ -8,13 +8,11 @@ on:
     branches: [ main ]
     paths-ignore:
       - '.github/workflows/security.yml'
-      - '*.md'
       - 'docs/**'
   pull_request:
     branches: [ main ]
     paths-ignore:
       - '.github/workflows/security.yml'
-      - '*.md'
       - 'docs/**'
   workflow_dispatch:
 
